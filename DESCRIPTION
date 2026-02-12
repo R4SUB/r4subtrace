@@ -1,0 +1,30 @@
+Package: r4subtrace
+Title: Traceability Engine for Clinical Submission Readiness
+Version: 0.1.0
+Authors@R:
+    person("Pawan Rama", "Mali", , "prm@outlook.in", role = c("aut", "cre"))
+Description: Quantifies and explains end-to-end traceability between clinical
+    submission artifacts (ADaM outputs, derivations, SDTM sources, specs, code).
+    Builds trace models from metadata and mapping sheets, computes trace levels,
+    and emits standardized R4SUB evidence table rows via 'r4subcore'.
+License: MIT + file LICENSE
+URL: https://github.com/R4SUB/r4subtrace
+BugReports: https://github.com/R4SUB/r4subtrace/issues
+Depends:
+    R (>= 4.2)
+Imports:
+    cli,
+    dplyr,
+    r4subcore,
+    rlang,
+    stringr,
+    tibble
+Suggests:
+    igraph,
+    testthat (>= 3.0.0)
+Remotes:
+    R4SUB/r4subcore
+Config/testthat/edition: 3
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.3
