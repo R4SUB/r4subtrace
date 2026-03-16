@@ -55,132 +55,162 @@
   <main id="main" class="col-md-9"><div class="section level1">
 <div class="page-header"><h1 id="r4subtrace">r4subtrace<a class="anchor" aria-label="anchor" href="#r4subtrace"></a>
 </h1></div>
-<p><strong>r4subtrace</strong> is the traceability engine in the <strong>R4SUB</strong> ecosystem. It quantifies and explains <strong>end-to-end traceability</strong> between clinical submission artifacts – primarily <strong>ADaM outputs &lt;-&gt; derivations &lt;-&gt; SDTM sources &lt;-&gt; specs &lt;-&gt; code</strong> – and converts trace evidence into standardized <strong>R4SUB Evidence Table</strong> rows (from <code>r4subcore</code>).</p>
-<p>It focuses on answering one question:</p>
+<!-- badges: start -->
+
+<p><strong>r4subtrace</strong> is the traceability engine in the R4SUB ecosystem. It quantifies end-to-end traceability between clinical submission artifacts — ADaM outputs ↔︎ derivations ↔︎ SDTM sources ↔︎ specs ↔︎ code — and converts trace evidence into standardized R4SUB evidence rows.</p>
 <blockquote>
-<p><strong>Can we prove where each analysis variable/value came from, and can a reviewer follow it?</strong></p>
+<p>Can we prove where each analysis variable came from, and can a reviewer follow it?</p>
 </blockquote>
-<div class="section level2">
-<h2 id="why-r4subtrace">Why r4subtrace?<a class="anchor" aria-label="anchor" href="#why-r4subtrace"></a>
-</h2>
-<p>In real submissions, issues are rarely “a single failed rule.” Many are trace failures: - Missing or ambiguous derivation documentation - ADaM variable not linkable to SDTM sources - Mismatch between spec and what code produces - Inconsistent naming across specs, define.xml, and datasets - Reviewer cannot reproduce or validate lineage</p>
-<p><code>r4subtrace</code> formalizes traceability as <strong>evidence + measurable indicators</strong>.</p>
-</div>
-<div class="section level2">
-<h2 id="what-r4subtrace-measures">What r4subtrace measures<a class="anchor" aria-label="anchor" href="#what-r4subtrace-measures"></a>
-</h2>
-<div class="section level3">
-<h3 id="traceability-levels">Traceability levels<a class="anchor" aria-label="anchor" href="#traceability-levels"></a>
-</h3>
-<ul>
-<li>
-<strong>L0 – None:</strong> no linkage available</li>
-<li>
-<strong>L1 – Spec-only:</strong> ADaM spec defines derivation but no code mapping</li>
-<li>
-<strong>L2 – Spec + source mapping:</strong> ADaM var mapped to SDTM vars/domains</li>
-<li>
-<strong>L3 – Spec + code mapping:</strong> mapping exists with high confidence or derivation text</li>
-</ul>
-</div>
-</div>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"r4subtrace"</span><span class="op">)</span></span></code></pre></div>
+<p>Development version:</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">pak</span><span class="fu">::</span><span class="fu"><a href="https://pak.r-lib.org/reference/pak.html" class="external-link">pak</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"R4SUB/r4subcore"</span>, <span class="st">"R4SUB/r4subtrace"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
-<h2 id="quick-start">Quick start<a class="anchor" aria-label="anchor" href="#quick-start"></a>
+<h2 id="traceability-levels">Traceability Levels<a class="anchor" aria-label="anchor" href="#traceability-levels"></a>
 </h2>
-<div class="section level3">
-<h3 id="id_1-create-run-context">1) Create run context<a class="anchor" aria-label="anchor" href="#id_1-create-run-context"></a>
-</h3>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<table class="table">
+<thead><tr class="header">
+<th>Level</th>
+<th>Name</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td>L0</td>
+<td>None</td>
+<td>No linkage available</td>
+</tr>
+<tr class="even">
+<td>L1</td>
+<td>Spec-only</td>
+<td>ADaM spec defines derivation, no code mapping</td>
+</tr>
+<tr class="odd">
+<td>L2</td>
+<td>Spec + source</td>
+<td>ADaM variable mapped to SDTM variables/domains</td>
+</tr>
+<tr class="even">
+<td>L3</td>
+<td>Spec + code</td>
+<td>Mapping with high confidence or derivation text</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section level2">
+<h2 id="quick-start">Quick Start<a class="anchor" aria-label="anchor" href="#quick-start"></a>
+</h2>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/R4SUB/r4subcore" class="external-link">r4subcore</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://r4sub.github.io/r4subtrace/">r4subtrace</a></span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">ctx</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/r4subcore/man/r4sub_run_context.html" class="external-link">r4sub_run_context</a></span><span class="op">(</span>study_id <span class="op">=</span> <span class="st">"ABC123"</span>, environment <span class="op">=</span> <span class="st">"DEV"</span><span class="op">)</span></span></code></pre></div>
-</div>
-<div class="section level3">
-<h3 id="id_2-load-metadata">2) Load metadata<a class="anchor" aria-label="anchor" href="#id_2-load-metadata"></a>
-</h3>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">adam_meta</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html" class="external-link">read.csv</a></span><span class="op">(</span><span class="st">"adam_metadata.csv"</span><span class="op">)</span>  <span class="co"># columns: dataset, variable, label, type</span></span>
-<span><span class="va">sdtm_meta</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html" class="external-link">read.csv</a></span><span class="op">(</span><span class="st">"sdtm_metadata.csv"</span><span class="op">)</span>  <span class="co"># same structure</span></span>
+<span><span class="va">ctx</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/r4subcore/man/r4sub_run_context.html" class="external-link">r4sub_run_context</a></span><span class="op">(</span>study_id <span class="op">=</span> <span class="st">"ABC123"</span>, environment <span class="op">=</span> <span class="st">"DEV"</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">map</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html" class="external-link">read.csv</a></span><span class="op">(</span><span class="st">"trace_map.csv"</span><span class="op">)</span></span>
-<span><span class="co"># recommended columns:</span></span>
-<span><span class="co"># adam_dataset, adam_var, sdtm_domain, sdtm_var, derivation_text(optional), confidence(optional)</span></span></code></pre></div>
-</div>
-<div class="section level3">
-<h3 id="id_3-build-trace-model-and-evidence">3) Build trace model and evidence<a class="anchor" aria-label="anchor" href="#id_3-build-trace-model-and-evidence"></a>
-</h3>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">tm</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/build_trace_model.html">build_trace_model</a></span><span class="op">(</span></span>
-<span>  adam_meta <span class="op">=</span> <span class="va">adam_meta</span>,</span>
-<span>  sdtm_meta <span class="op">=</span> <span class="va">sdtm_meta</span>,</span>
-<span>  mapping   <span class="op">=</span> <span class="va">map</span></span>
+<span><span class="co"># Build a trace model from metadata and mapping tables</span></span>
+<span><span class="va">tm</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/build_trace_model.html">build_trace_model</a></span><span class="op">(</span></span>
+<span>  adam_meta <span class="op">=</span> <span class="va">adam_metadata</span>,</span>
+<span>  sdtm_meta <span class="op">=</span> <span class="va">sdtm_metadata</span>,</span>
+<span>  mapping   <span class="op">=</span> <span class="va">trace_mapping</span></span>
 <span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">ev</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/trace_model_to_evidence.html">trace_model_to_evidence</a></span><span class="op">(</span><span class="va">tm</span>, ctx <span class="op">=</span> <span class="va">ctx</span>, source_name <span class="op">=</span> <span class="st">"r4subtrace"</span>, source_version <span class="op">=</span> <span class="st">"0.1.0"</span><span class="op">)</span></span>
+<span><span class="co"># Emit evidence rows</span></span>
+<span><span class="va">ev</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/trace_model_to_evidence.html">trace_model_to_evidence</a></span><span class="op">(</span><span class="va">tm</span>, ctx <span class="op">=</span> <span class="va">ctx</span>,</span>
+<span>                              source_name <span class="op">=</span> <span class="st">"r4subtrace"</span>,</span>
+<span>                              source_version <span class="op">=</span> <span class="st">"0.1.0"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/r4subcore/man/validate_evidence.html" class="external-link">validate_evidence</a></span><span class="op">(</span><span class="va">ev</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/r4subcore/man/evidence_summary.html" class="external-link">evidence_summary</a></span><span class="op">(</span><span class="va">ev</span><span class="op">)</span></span></code></pre></div>
-</div>
-<div class="section level3">
-<h3 id="id_4-compute-trace-coverage-score">4) Compute trace coverage score<a class="anchor" aria-label="anchor" href="#id_4-compute-trace-coverage-score"></a>
-</h3>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">ind</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/trace_indicator_scores.html">trace_indicator_scores</a></span><span class="op">(</span><span class="va">ev</span><span class="op">)</span></span>
-<span><span class="va">ind</span></span></code></pre></div>
-</div>
+<span></span>
+<span><span class="co"># Indicator scores</span></span>
+<span><span class="va">ind</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/trace_indicator_scores.html">trace_indicator_scores</a></span><span class="op">(</span><span class="va">ev</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
-<h2 id="core-objects">Core objects<a class="anchor" aria-label="anchor" href="#core-objects"></a>
+<h2 id="trace-indicators">Trace Indicators<a class="anchor" aria-label="anchor" href="#trace-indicators"></a>
 </h2>
-<div class="section level3">
-<h3 id="trace-model">Trace Model<a class="anchor" aria-label="anchor" href="#trace-model"></a>
-</h3>
-<p>A list with:</p>
-<ul>
-<li>
-<code>nodes</code>: tidy table of assets (dataset/variable/spec/program)</li>
-<li>
-<code>edges</code>: tidy table of relationships + confidence</li>
-<li>
-<code>diagnostics</code>: issues found (orphans, ambiguities, conflicts)</li>
-</ul>
-</div>
-<div class="section level3">
-<h3 id="trace-evidence">Trace Evidence<a class="anchor" aria-label="anchor" href="#trace-evidence"></a>
-</h3>
-<p>Evidence rows are emitted for:</p>
-<ul>
-<li>each ADaM variable trace level</li>
-<li>each orphan/ambiguity/conflict</li>
-<li>aggregate coverage metrics</li>
-</ul>
-</div>
+<table class="table">
+<colgroup>
+<col width="50%">
+<col width="50%">
+</colgroup>
+<thead><tr class="header">
+<th>Indicator</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td><code>TRACE_VAR_COVERAGE_L2PLUS</code></td>
+<td>Proportion of ADaM variables with L2+ trace</td>
+</tr>
+<tr class="even">
+<td><code>TRACE_VAR_COVERAGE_L3PLUS</code></td>
+<td>Proportion with L3+ trace</td>
+</tr>
+<tr class="odd">
+<td><code>TRACE_ORPHAN_VAR_COUNT</code></td>
+<td>ADaM variables with no SDTM mapping</td>
+</tr>
+<tr class="even">
+<td><code>TRACE_AMBIGUOUS_MAPPING_COUNT</code></td>
+<td>Variables mapped to multiple SDTM sources</td>
+</tr>
+<tr class="odd">
+<td><code>TRACE_MEAN_TRACE_LEVEL</code></td>
+<td>Mean trace level across all ADaM variables</td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="section level2">
-<h2 id="indicators">Indicators<a class="anchor" aria-label="anchor" href="#indicators"></a>
+<h2 id="key-functions">Key Functions<a class="anchor" aria-label="anchor" href="#key-functions"></a>
 </h2>
-<ul>
-<li>
-<code>TRACE_VAR_COVERAGE_L2PLUS</code>: proportion of ADaM variables with L2+ trace</li>
-<li>
-<code>TRACE_VAR_COVERAGE_L3PLUS</code>: proportion with L3+ trace</li>
-<li>
-<code>TRACE_ORPHAN_VAR_COUNT</code>: orphan ADaM vars with no SDTM mapping</li>
-<li>
-<code>TRACE_AMBIGUOUS_MAPPING_COUNT</code>: vars mapped to multiple SDTM sources</li>
-<li>
-<code>TRACE_MEAN_TRACE_LEVEL</code>: mean trace level across all ADaM variables</li>
-</ul>
+<table class="table">
+<colgroup>
+<col width="50%">
+<col width="50%">
+</colgroup>
+<thead><tr class="header">
+<th>Function</th>
+<th>Purpose</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td><code><a href="reference/trace_config_default.html">trace_config_default()</a></code></td>
+<td>Default traceability configuration</td>
+</tr>
+<tr class="even">
+<td><code><a href="reference/build_trace_model.html">build_trace_model()</a></code></td>
+<td>Build a trace graph from metadata and mappings</td>
+</tr>
+<tr class="odd">
+<td><code><a href="reference/compute_trace_levels.html">compute_trace_levels()</a></code></td>
+<td>Assign L0–L3 trace levels per ADaM variable</td>
+</tr>
+<tr class="even">
+<td><code><a href="reference/trace_model_to_evidence.html">trace_model_to_evidence()</a></code></td>
+<td>Emit r4subcore-compatible evidence rows</td>
+</tr>
+<tr class="odd">
+<td><code><a href="reference/trace_indicator_scores.html">trace_indicator_scores()</a></code></td>
+<td>Compute trace indicator scores</td>
+</tr>
+<tr class="even">
+<td><code><a href="reference/validate_mapping.html">validate_mapping()</a></code></td>
+<td>Validate a mapping table for required columns</td>
+</tr>
+<tr class="odd">
+<td><code><a href="reference/validate_metadata.html">validate_metadata()</a></code></td>
+<td>Validate ADaM/SDTM metadata tables</td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="section level2">
-<h2 id="design-principles">Design principles<a class="anchor" aria-label="anchor" href="#design-principles"></a>
+<h2 id="design-principles">Design Principles<a class="anchor" aria-label="anchor" href="#design-principles"></a>
 </h2>
 <ul>
 <li>
@@ -188,7 +218,7 @@
 <li>
 <strong>Evidence-first:</strong> all conclusions are backed by explicit evidence rows</li>
 <li>
-<strong>Tool-agnostic:</strong> can ingest mapping from any source format</li>
+<strong>Tool-agnostic:</strong> ingest mappings from any source format</li>
 <li>
 <strong>Reviewer-centric:</strong> emphasize explainability, not just metrics</li>
 </ul>
@@ -232,7 +262,15 @@
 </ul>
 </div>
 
-
+<div class="dev-status">
+<h2 data-toc-skip>Dev status</h2>
+<ul class="list-unstyled">
+<li><a href="https://github.com/R4SUB/r4subtrace/actions/workflows/R-CMD-check.yaml" class="external-link"><img src="https://github.com/R4SUB/r4subtrace/actions/workflows/R-CMD-check.yaml/badge.svg" alt="R-CMD-check"></a></li>
+<li><a href="https://CRAN.R-project.org/package=r4subtrace" class="external-link"><img src="https://www.r-pkg.org/badges/version/r4subtrace" alt="CRAN status"></a></li>
+<li><a href="https://CRAN.R-project.org/package=r4subtrace" class="external-link"><img src="https://cranlogs.r-pkg.org/badges/r4subtrace" alt="CRAN downloads"></a></li>
+<li><a href="https://r4sub.r-universe.dev/r4subtrace" class="external-link"><img src="https://r4sub.r-universe.dev/badges/r4subtrace" alt="r-universe"></a></li>
+</ul>
+</div>
 
   </aside>
 </div>
