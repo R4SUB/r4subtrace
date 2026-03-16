@@ -19,10 +19,6 @@ navbar:
 
 home:
   title: "r4subtrace — Traceability Engine for Clinical Submissions"
-  description: >
-    Quantifies end-to-end traceability between ADaM outputs, derivations,
-    SDTM sources, specs, and code. Builds directed trace models and emits
-    standardized R4SUB evidence rows.
 
 reference:
   - title: "Configuration"
@@ -32,9 +28,12 @@ reference:
     contents:
       - build_trace_model
       - compute_trace_levels
-  - title: "Indicators"
+      - trace_model_to_evidence
+  - title: "Indicators & Validation"
     contents:
       - trace_indicator_scores
+      - validate_mapping
+      - validate_metadata
 
 footer:
   structure:
