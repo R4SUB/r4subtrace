@@ -34,6 +34,9 @@ reference:
       - trace_indicator_scores
       - validate_mapping
       - validate_metadata
+  - title: "Print Methods"
+    contents:
+      - print.trace_model
 
 footer:
   structure:
