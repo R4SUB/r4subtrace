@@ -1,0 +1,131 @@
+---
+title: "Traceability Analysis with r4subtrace"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Traceability Analysis with r4subtrace}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(collapse = TRUE, comment = "#>")
+```
+
+Traceability is a core regulatory requirement: reviewers must be able to
+follow every analysis variable from its source SDTM domain through any
+derivation to the final ADaM dataset. The `r4subtrace` package builds a
+directed trace model and evaluates coverage.
+
+```{r load}
+library(r4subtrace)
+```
+
+## Default configuration
+
+```{r config}
+cfg <- trace_config_default()
+str(cfg)
+```
+
+## Building a trace model
+
+`build_trace_model()` takes ADaM metadata, SDTM metadata, and an optional
+mapping sheet. It returns a `trace_model` object with nodes, edges, and
+diagnostic information.
+
+```{r trace-model}
+adam_meta <- data.frame(
+  dataset  = rep("ADSL", 5),
+  variable = c("STUDYID", "USUBJID", "AGE", "SEX", "TRT01P"),
+  label    = c("Study ID", "Unique Subject ID", "Age",
+               "Sex", "Planned Treatment"),
+  stringsAsFactors = FALSE
+)
+
+sdtm_meta <- data.frame(
+  dataset  = c(rep("DM", 4), "EX"),
+  variable = c("STUDYID", "USUBJID", "AGE", "SEX", "EXTRT"),
+  label    = c("Study ID", "Unique Subject ID", "Age",
+               "Sex", "Treatment Name"),
+  stringsAsFactors = FALSE
+)
+
+mapping <- data.frame(
+  adam_dataset = rep("ADSL", 5),
+  adam_var     = c("STUDYID", "USUBJID", "AGE", "SEX", "TRT01P"),
+  sdtm_domain  = c("DM", "DM", "DM", "DM", "EX"),
+  sdtm_var     = c("STUDYID", "USUBJID", "AGE", "SEX", "EXTRT"),
+  stringsAsFactors = FALSE
+)
+
+tm <- build_trace_model(adam_meta, sdtm_meta, mapping = mapping)
+print(tm)
+```
+
+## Inspecting the trace model
+
+The `nodes` tibble lists all assets; `edges` describes the relationships:
+
+```{r nodes-edges}
+head(tm$nodes)
+head(tm$edges)
+```
+
+Diagnostic information flags any orphan variables (unmapped ADaM variables):
+
+```{r diagnostics}
+tm$diagnostics$orphans
+```
+
+## Computing trace levels
+
+`compute_trace_levels()` summarises coverage per ADaM dataset:
+
+```{r trace-levels}
+tl <- compute_trace_levels(tm)
+tl
+```
+
+## Indicator scores from evidence
+
+If you have an evidence table with `indicator_domain == "trace"`,
+`trace_indicator_scores()` computes per-indicator aggregates:
+
+```{r indicator-scores}
+ev_trace <- data.frame(
+  indicator_id     = c("T-001", "T-001", "T-002"),
+  indicator_domain = "trace",
+  result           = c("pass", "warn", "fail"),
+  metric_value     = c(1.0, 0.8, 0.0),
+  metric_unit      = "proportion",
+  severity         = c("info", "medium", "high"),
+  stringsAsFactors = FALSE
+)
+
+trace_indicator_scores(ev_trace)
+```
+
+## Partial mapping (orphans)
+
+When a variable has no mapping entry, it appears as an orphan:
+
+```{r orphans}
+adam_partial <- data.frame(
+  dataset  = rep("ADSL", 3),
+  variable = c("USUBJID", "AGE", "DERIVED_VAR"),
+  label    = c("Unique Subject ID", "Age", "Derived Variable"),
+  stringsAsFactors = FALSE
+)
+mapping_partial <- data.frame(
+  adam_dataset = c("ADSL", "ADSL"),
+  adam_var     = c("USUBJID", "AGE"),
+  sdtm_domain  = c("DM", "DM"),
+  sdtm_var     = c("USUBJID", "AGE"),
+  stringsAsFactors = FALSE
+)
+tm2 <- build_trace_model(adam_partial, sdtm_meta, mapping = mapping_partial)
+tm2$diagnostics$orphans
+```
+
+Orphaned variables (like `DERIVED_VAR` above) should have derivation text
+documented to satisfy U-002 and T-002 requirements.

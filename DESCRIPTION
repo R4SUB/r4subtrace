@@ -2,9 +2,9 @@ Package: r4subtrace
 Title: Traceability Engine for Clinical Submission Readiness
 Version: 0.1.0
 Authors@R:
-    person("Pawan Rama", "Mali", email = "prm@outlook.in", role = c("aut", "cre"))
-Author: Pawan Rama Mali [aut, cre]
-Maintainer: Pawan Rama Mali <prm@outlook.in>
+    person("Pawan Rama", "Mali", email = "prm@outlook.in",
+           role = c("aut", "cre", "cph"),
+           comment = c(ORCID = "0000-0001-7864-5819"))
 Description: Quantifies and explains end-to-end traceability between clinical
     submission artifacts (ADaM (Analysis Data Model) outputs, derivations,
     SDTM (Study Data Tabulation Model) sources, specs, code). Builds trace
@@ -25,7 +25,10 @@ Imports:
     tibble
 Suggests:
     igraph,
+    knitr,
+    rmarkdown,
     testthat (>= 3.0.0)
+VignetteBuilder: knitr
 Config/testthat/edition: 3
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
