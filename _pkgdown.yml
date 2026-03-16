@@ -1,0 +1,42 @@
+url: https://r4sub.github.io/r4subtrace/
+
+template:
+  bootstrap: 5
+  bootswatch: flatly
+  bslib:
+    primary: "#2C6DB5"
+
+navbar:
+  bg: light
+  structure:
+    left: [intro, reference, articles, news]
+    right: [search, github]
+  components:
+    github:
+      icon: fab fa-github
+      href: https://github.com/R4SUB/r4subtrace
+      aria-label: GitHub
+
+home:
+  title: "r4subtrace — Traceability Engine for Clinical Submissions"
+  description: >
+    Quantifies end-to-end traceability between ADaM outputs, derivations,
+    SDTM sources, specs, and code. Builds directed trace models and emits
+    standardized R4SUB evidence rows.
+
+reference:
+  - title: "Configuration"
+    contents:
+      - trace_config_default
+  - title: "Trace Model"
+    contents:
+      - build_trace_model
+      - compute_trace_levels
+  - title: "Indicators"
+    contents:
+      - trace_indicator_scores
+
+footer:
+  structure:
+    left: developed_by
+    right: built_with

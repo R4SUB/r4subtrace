@@ -12,7 +12,7 @@ Description: Quantifies and explains end-to-end traceability between clinical
     standardized R4SUB (R for Regulatory Submission) evidence table rows via
     'r4subcore'.
 License: MIT + file LICENSE
-URL: https://github.com/R4SUB/r4subtrace
+URL: https://r4sub.github.io/r4subtrace/, https://github.com/R4SUB/r4subtrace
 BugReports: https://github.com/R4SUB/r4subtrace/issues
 Depends:
     R (>= 4.2)
