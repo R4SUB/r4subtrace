@@ -6,12 +6,14 @@ derivation to the final ADaM dataset. The `r4subtrace` package builds a
 directed trace model and evaluates coverage.
 
 ``` r
+
 library(r4subtrace)
 ```
 
 ## Default configuration
 
 ``` r
+
 cfg <- trace_config_default()
 str(cfg)
 #> List of 4
@@ -32,6 +34,7 @@ returns a `trace_model` object with nodes, edges, and diagnostic
 information.
 
 ``` r
+
 adam_meta <- data.frame(
   dataset  = rep("ADSL", 5),
   variable = c("STUDYID", "USUBJID", "AGE", "SEX", "TRT01P"),
@@ -68,6 +71,7 @@ The `nodes` tibble lists all assets; `edges` describes the
 relationships:
 
 ``` r
+
 head(tm$nodes)
 #> # A tibble: 6 × 6
 #>   node_id                            node_type dataset variable label      role 
@@ -93,6 +97,7 @@ Diagnostic information flags any orphan variables (unmapped ADaM
 variables):
 
 ``` r
+
 tm$diagnostics$orphans
 #> # A tibble: 0 × 2
 #> # ℹ 2 variables: adam_dataset <chr>, adam_var <chr>
@@ -104,6 +109,7 @@ tm$diagnostics$orphans
 summarises coverage per ADaM dataset:
 
 ``` r
+
 tl <- compute_trace_levels(tm)
 tl
 #> # A tibble: 5 × 7
@@ -124,6 +130,7 @@ If you have an evidence table with `indicator_domain == "trace"`,
 computes per-indicator aggregates:
 
 ``` r
+
 ev_trace <- data.frame(
   indicator_id     = c("T-001", "T-001", "T-002"),
   indicator_domain = "trace",
@@ -150,6 +157,7 @@ trace_indicator_scores(ev_trace)
 When a variable has no mapping entry, it appears as an orphan:
 
 ``` r
+
 adam_partial <- data.frame(
   dataset  = rep("ADSL", 3),
   variable = c("USUBJID", "AGE", "DERIVED_VAR"),

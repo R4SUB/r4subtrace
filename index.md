@@ -11,12 +11,14 @@ converts trace evidence into standardized R4SUB evidence rows.
 ## Installation
 
 ``` r
+
 install.packages("r4subtrace")
 ```
 
 Development version:
 
 ``` r
+
 pak::pak(c("R4SUB/r4subcore", "R4SUB/r4subtrace"))
 ```
 
@@ -32,6 +34,7 @@ pak::pak(c("R4SUB/r4subcore", "R4SUB/r4subtrace"))
 ## Quick Start
 
 ``` r
+
 library(r4subcore)
 library(r4subtrace)
 
@@ -57,25 +60,25 @@ ind <- trace_indicator_scores(ev)
 
 ## Trace Indicators
 
-| Indicator                       | Description                                 |
-|---------------------------------|---------------------------------------------|
-| `TRACE_VAR_COVERAGE_L2PLUS`     | Proportion of ADaM variables with L2+ trace |
-| `TRACE_VAR_COVERAGE_L3PLUS`     | Proportion with L3+ trace                   |
-| `TRACE_ORPHAN_VAR_COUNT`        | ADaM variables with no SDTM mapping         |
-| `TRACE_AMBIGUOUS_MAPPING_COUNT` | Variables mapped to multiple SDTM sources   |
-| `TRACE_MEAN_TRACE_LEVEL`        | Mean trace level across all ADaM variables  |
+| Indicator | Description |
+|----|----|
+| `TRACE_VAR_COVERAGE_L2PLUS` | Proportion of ADaM variables with L2+ trace |
+| `TRACE_VAR_COVERAGE_L3PLUS` | Proportion with L3+ trace |
+| `TRACE_ORPHAN_VAR_COUNT` | ADaM variables with no SDTM mapping |
+| `TRACE_AMBIGUOUS_MAPPING_COUNT` | Variables mapped to multiple SDTM sources |
+| `TRACE_MEAN_TRACE_LEVEL` | Mean trace level across all ADaM variables |
 
 ## Key Functions
 
-| Function                                                                                               | Purpose                                        |
-|--------------------------------------------------------------------------------------------------------|------------------------------------------------|
-| [`trace_config_default()`](https://r4sub.github.io/r4subtrace/reference/trace_config_default.md)       | Default traceability configuration             |
-| [`build_trace_model()`](https://r4sub.github.io/r4subtrace/reference/build_trace_model.md)             | Build a trace graph from metadata and mappings |
-| [`compute_trace_levels()`](https://r4sub.github.io/r4subtrace/reference/compute_trace_levels.md)       | Assign L0–L3 trace levels per ADaM variable    |
-| [`trace_model_to_evidence()`](https://r4sub.github.io/r4subtrace/reference/trace_model_to_evidence.md) | Emit r4subcore-compatible evidence rows        |
-| [`trace_indicator_scores()`](https://r4sub.github.io/r4subtrace/reference/trace_indicator_scores.md)   | Compute trace indicator scores                 |
-| [`validate_mapping()`](https://r4sub.github.io/r4subtrace/reference/validate_mapping.md)               | Validate a mapping table for required columns  |
-| [`validate_metadata()`](https://r4sub.github.io/r4subtrace/reference/validate_metadata.md)             | Validate ADaM/SDTM metadata tables             |
+| Function | Purpose |
+|----|----|
+| [`trace_config_default()`](https://r4sub.github.io/r4subtrace/reference/trace_config_default.md) | Default traceability configuration |
+| [`build_trace_model()`](https://r4sub.github.io/r4subtrace/reference/build_trace_model.md) | Build a trace graph from metadata and mappings |
+| [`compute_trace_levels()`](https://r4sub.github.io/r4subtrace/reference/compute_trace_levels.md) | Assign L0–L3 trace levels per ADaM variable |
+| [`trace_model_to_evidence()`](https://r4sub.github.io/r4subtrace/reference/trace_model_to_evidence.md) | Emit r4subcore-compatible evidence rows |
+| [`trace_indicator_scores()`](https://r4sub.github.io/r4subtrace/reference/trace_indicator_scores.md) | Compute trace indicator scores |
+| [`validate_mapping()`](https://r4sub.github.io/r4subtrace/reference/validate_mapping.md) | Validate a mapping table for required columns |
+| [`validate_metadata()`](https://r4sub.github.io/r4subtrace/reference/validate_metadata.md) | Validate ADaM/SDTM metadata tables |
 
 ## Design Principles
 
