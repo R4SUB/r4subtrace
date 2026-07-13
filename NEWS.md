@@ -1,3 +1,9 @@
+# r4subtrace (development version)
+
+- Clarified the package DESCRIPTION: "R4SUB" expands to "Ready for Submission"
+  (previously "R for Regulatory Submission", inconsistent with the rest of the
+  ecosystem).
+
 # r4subtrace 0.1.1
 
 - Add vignette: "Traceability Analysis with r4subtrace" covering

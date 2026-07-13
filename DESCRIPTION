@@ -9,7 +9,7 @@ Description: Quantifies and explains end-to-end traceability between clinical
     submission artifacts (ADaM (Analysis Data Model) outputs, derivations,
     SDTM (Study Data Tabulation Model) sources, specs, code). Builds trace
     models from metadata and mapping sheets, computes trace levels, and emits
-    standardized R4SUB (R for Regulatory Submission) evidence table rows via
+    standardized R4SUB (Ready for Submission) evidence table rows via
     'r4subcore'.
 License: MIT + file LICENSE
 URL: https://r4sub.github.io/r4subtrace/, https://github.com/R4SUB/r4subtrace
