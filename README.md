@@ -7,7 +7,7 @@
 [![r-universe](https://r4sub.r-universe.dev/badges/r4subtrace)](https://r4sub.r-universe.dev/r4subtrace)
 <!-- badges: end -->
 
-**r4subtrace** is the traceability engine in the R4SUB ecosystem. It quantifies end-to-end traceability between clinical submission artifacts — ADaM outputs ↔ derivations ↔ SDTM sources ↔ specs ↔ code — and converts trace evidence into standardized R4SUB evidence rows.
+**r4subtrace** is the traceability engine in the R4SUB ecosystem. It quantifies end-to-end traceability between clinical submission artifacts (ADaM outputs, derivations, SDTM sources, specs, and code) and converts trace evidence into standardized R4SUB evidence rows.
 
 > Can we prove where each analysis variable came from, and can a reviewer follow it?
 
