@@ -3,6 +3,8 @@
 S3method(print,trace_model)
 export(build_trace_model)
 export(compute_trace_levels)
+export(plot_trace_graph)
+export(trace_chains)
 export(trace_config_default)
 export(trace_indicator_scores)
 export(trace_model_to_evidence)
