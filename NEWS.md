@@ -1,5 +1,9 @@
 # r4subtrace (development version)
 
+- Add vignette: "Case study: tracing ADaM back to SDTM", a worked walkthrough
+  building a trace model from the example CDISC pilot metadata in `r4subdata`,
+  finding orphan variables, and reading the coverage indicators.
+
 - Clarified the package DESCRIPTION: "R4SUB" expands to "Ready for Submission"
   (previously "R for Regulatory Submission", inconsistent with the rest of the
   ecosystem).
