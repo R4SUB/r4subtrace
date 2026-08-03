@@ -6,18 +6,19 @@
 \alias{r4subtrace-package}
 \title{r4subtrace: Traceability Engine for Clinical Submission Readiness}
 \description{
-Quantifies and explains end-to-end traceability between clinical submission artifacts (ADaM outputs, derivations, SDTM sources, specs, code). Builds trace models from metadata and mapping sheets, computes trace levels, and emits standardized R4SUB evidence table rows via 'r4subcore'.
+Quantifies and explains end-to-end traceability between clinical submission artifacts (ADaM (Analysis Data Model) outputs, derivations, SDTM (Study Data Tabulation Model) sources, specs, code). Builds trace models from metadata and mapping sheets, computes trace levels, and emits standardized R4SUB (Ready for Submission) evidence table rows via 'r4subcore'.
 }
 \seealso{
 Useful links:
 \itemize{
+  \item \url{https://r4sub.github.io/r4subtrace/}
   \item \url{https://github.com/R4SUB/r4subtrace}
   \item Report bugs at \url{https://github.com/R4SUB/r4subtrace/issues}
 }
 
 }
 \author{
-\strong{Maintainer}: Pawan Rama Mali \email{prm@outlook.in}
+\strong{Maintainer}: Pawan Rama Mali \email{prm@outlook.in} (\href{https://orcid.org/0000-0001-7864-5819}{ORCID}) [copyright holder]
 
 }
 \keyword{internal}
