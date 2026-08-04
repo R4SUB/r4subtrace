@@ -1,6 +1,6 @@
 Package: r4subtrace
 Title: Traceability Engine for Clinical Submission Readiness
-Version: 0.2.0
+Version: 0.2.1
 Authors@R:
     person("Pawan Rama", "Mali", email = "prm@outlook.in",
            role = c("aut", "cre", "cph"),

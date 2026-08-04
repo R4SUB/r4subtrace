@@ -1,4 +1,4 @@
-# r4subtrace (development version)
+# r4subtrace 0.2.1
 
 - Add `trace_problems()`, a focused view of just the traceability issues worth
   acting on: variables that are not traced to the required level, and, when a
