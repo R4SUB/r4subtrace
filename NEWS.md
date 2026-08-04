@@ -4,6 +4,9 @@
   summarize traceability coverage per ADaM dataset (percent traced, untraced
   variables listed) with an overall summary row, and export the table as a
   data.frame, CSV, or Excel file for ADRG appendices.
+- Add vignette: "Case study: tracing ADaM back to SDTM", a worked walkthrough
+  building a trace model from the example CDISC pilot metadata in `r4subdata`,
+  finding orphan variables, and reading the coverage indicators.
 - Clarified the package DESCRIPTION: "R4SUB" expands to "Ready for Submission"
   (previously "R for Regulatory Submission", inconsistent with the rest of the
   ecosystem).

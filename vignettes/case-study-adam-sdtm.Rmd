@@ -1,0 +1,93 @@
+---
+title: "Case study: tracing ADaM back to SDTM"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Case study: tracing ADaM back to SDTM}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(collapse = TRUE, comment = "#>")
+```
+
+Traceability is a filing requirement, but on most studies it lives as a
+spreadsheet someone maintains by hand. `r4subtrace` treats it as data instead:
+it takes your ADaM metadata, your SDTM metadata, and a mapping sheet, builds a
+graph, and tells you exactly which variables can be traced back to source and
+which cannot.
+
+This case study uses the example CDISC pilot metadata that ships with
+`r4subdata`.
+
+```{r libs, message = FALSE}
+library(r4subtrace)
+library(r4subdata)
+```
+
+## The inputs
+
+Three tables: what is in ADaM, what is in SDTM, and how the two connect.
+
+```{r inputs}
+head(adam_metadata, 3)
+head(sdtm_metadata, 3)
+head(trace_mapping, 3)
+```
+
+The mapping carries a derivation description and a confidence score for each
+link, which is what lets the model tell a direct copy apart from a documented
+derivation.
+
+## Building the model
+
+`build_trace_model()` turns the three tables into nodes and edges, and flags the
+problems it finds along the way.
+
+```{r model}
+tm <- build_trace_model(adam_metadata, sdtm_metadata, mapping = trace_mapping)
+tm
+```
+
+The orphans in that summary are ADaM variables with no mapping row at all. They
+are the first thing to chase, because an untraceable variable is exactly what a
+reviewer will stop on.
+
+```{r orphans}
+tm$diagnostics$orphans
+```
+
+## Trace levels
+
+`compute_trace_levels()` assigns each ADaM variable a level from L0 (no mapping,
+no derivation) up to L3 (mapped with high confidence or a documented
+derivation).
+
+```{r levels}
+levels <- compute_trace_levels(tm)
+table(levels$trace_level)
+```
+
+That distribution is the honest coverage picture. Variables at L0 or L1 are the
+gap.
+
+```{r gap}
+levels[levels$trace_level < 2, c("adam_dataset", "adam_var", "trace_level")]
+```
+
+## Coverage as indicators
+
+`trace_model_to_evidence()` turns the model into R4SUB evidence, and
+`trace_indicator_scores()` summarises it into the numbers that feed the Trace
+pillar of the Submission Confidence Index.
+
+```{r indicators}
+ctx <- r4subcore::r4sub_run_context(study_id = "CDISCPILOT01", environment = "UAT")
+ev  <- trace_model_to_evidence(tm, ctx = ctx)
+trace_indicator_scores(ev)
+```
+
+Coverage, orphan count, ambiguous mappings, and mean trace level: those are the
+signals the readiness score reads. Improving them is not a documentation chore
+done at the end, it is a number the whole team can watch move as the mapping
+gets completed.
