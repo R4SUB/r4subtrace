@@ -1,4 +1,4 @@
-# r4subtrace (development version)
+# r4subtrace 0.2.0
 
 - Add `export_traceability_report()` and `traceability_coverage()`, which
   summarize traceability coverage per ADaM dataset (percent traced, untraced
