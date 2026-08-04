@@ -129,3 +129,23 @@ tm2$diagnostics$orphans
 
 Orphaned variables (like `DERIVED_VAR` above) should have derivation text
 documented to satisfy U-002 and T-002 requirements.
+
+## Coverage report for the ADRG
+
+Once a trace model is built, `export_traceability_report()` produces the
+coverage table an ADRG appendix needs: how much of each ADaM dataset traces
+back to SDTM, which variables do not, and an overall summary row.
+
+```{r coverage}
+report <- export_traceability_report(tm)
+report
+```
+
+A variable counts as traced when its trace level reaches `traced_min_level`
+(the default of 2 treats an existing SDTM mapping as traced). Raise it to 3 to
+require a high-confidence mapping. Pass `format = "csv"` or `format = "xlsx"`
+with a `path` to write the table straight into a submission package:
+
+```{r coverage-csv, eval=FALSE}
+export_traceability_report(tm, format = "csv", path = "traceability.csv")
+```

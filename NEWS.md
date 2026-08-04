@@ -1,5 +1,9 @@
 # r4subtrace (development version)
 
+- Add `export_traceability_report()` and `traceability_coverage()`, which
+  summarize traceability coverage per ADaM dataset (percent traced, untraced
+  variables listed) with an overall summary row, and export the table as a
+  data.frame, CSV, or Excel file for ADRG appendices.
 - Clarified the package DESCRIPTION: "R4SUB" expands to "Ready for Submission"
   (previously "R for Regulatory Submission", inconsistent with the rest of the
   ecosystem).
