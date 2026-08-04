@@ -184,3 +184,26 @@ trace_chains(tmc, adam_derivations = deriv)
 reaches `DM.AGE`. The `trace_depth` argument caps how far the walk follows a
 chain, and circular derivations are detected and reported rather than looping
 forever.
+
+## Focusing on the problems
+
+A coverage table lists every variable. On a real submission with thousands of
+variables, a team wants only the ones that need attention. `trace_problems()`
+returns just those: variables not traced to the required level, and, when a
+derivation table is given, chains that are circular, cut off, or never reach
+SDTM.
+
+```{r problems}
+trace_problems(tm2)
+```
+
+Passing the derivation table adds chain problems to the same view, so cycles and
+ungrounded derivations show up alongside untraced variables:
+
+```{r problems-chains}
+trace_problems(tmc, adam_derivations = deriv)
+```
+
+The view is built from the same coverage and chain functions, so it stays
+correct as a submission grows; the engine is exercised on a 10,000-variable
+model in the package tests.
