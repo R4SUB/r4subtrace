@@ -1,3 +1,12 @@
+# r4subtrace (development version)
+
+- Add `trace_problems()`, a focused view of just the traceability issues worth
+  acting on: variables that are not traced to the required level, and, when a
+  derivation table is supplied, chains that never reach SDTM, that are circular,
+  or that were cut off at the depth limit. On a large submission this is what a
+  team consumes rather than the full per-variable coverage table. The engine is
+  verified on a 10,000-variable synthetic model.
+
 # r4subtrace 0.2.0
 
 - Add `export_traceability_report()` and `traceability_coverage()`, which
