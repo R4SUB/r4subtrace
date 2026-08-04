@@ -149,3 +149,38 @@ with a `path` to write the table straight into a submission package:
 ```{r coverage-csv, eval=FALSE}
 export_traceability_report(tm, format = "csv", path = "traceability.csv")
 ```
+
+## Multi-step derivation chains
+
+A direct ADaM-to-SDTM mapping is only the simplest case. Many variables are
+derived from other ADaM variables that are themselves derived from SDTM. A
+single hop misses those links. `trace_chains()` follows the full path back to
+source, using an `adam_derivations` table for the ADaM-to-ADaM steps.
+
+```{r chains}
+adam <- data.frame(
+  dataset  = c("ADSL", "ADAE", "ADTTE"),
+  variable = c("AGE", "AAGE", "TAGE"),
+  label    = c("Age", "Analysis Age", "Time-to-event Age")
+)
+sdtm <- data.frame(dataset = "DM", variable = "AGE", label = "Age")
+map  <- data.frame(
+  adam_dataset = "ADSL", adam_var = "AGE",
+  sdtm_domain = "DM", sdtm_var = "AGE", confidence = 1
+)
+tmc <- build_trace_model(adam, sdtm, mapping = map)
+
+deriv <- data.frame(
+  from_dataset = c("ADAE", "ADTTE"),
+  from_var     = c("AAGE", "TAGE"),
+  to_dataset   = c("ADSL", "ADAE"),
+  to_var       = c("AGE", "AAGE")
+)
+
+trace_chains(tmc, adam_derivations = deriv)
+```
+
+`ADTTE.TAGE` is three hops from source, but it is fully grounded: the chain
+reaches `DM.AGE`. The `trace_depth` argument caps how far the walk follows a
+chain, and circular derivations are detected and reported rather than looping
+forever.
