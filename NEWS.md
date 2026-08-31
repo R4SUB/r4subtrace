@@ -1,3 +1,13 @@
+# r4subtrace 0.3.0
+
+- Add `trace_impact()`, impact analysis for a changed source variable. Given a
+  variable that is about to change, it walks the derivation graph in reverse and
+  returns every ADaM variable that derives from it, directly or through a chain,
+  each with its distance from the change and a readable path back to it. This is
+  the question a data team asks before editing a source: what breaks downstream.
+  Circular references are handled and multi-step chains are followed through
+  `adam_derivations`, the same input `trace_chains()` uses.
+
 # r4subtrace 0.2.1
 
 - Add `trace_problems()`, a focused view of just the traceability issues worth
