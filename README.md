@@ -87,6 +87,10 @@ ind <- trace_indicator_scores(ev)
 - **Tool-agnostic:** ingest mappings from any source format
 - **Reviewer-centric:** emphasize explainability, not just metrics
 
+## Maintained by
+
+R4SUB is part of the open-source work of [TechWorksLab](https://techworkslab.com) - clinical programming and regulatory submissions. Maintainer: Pawan Rama Mali.
+
 ## License
 
 MIT
