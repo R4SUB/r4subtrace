@@ -94,3 +94,7 @@ R4SUB is part of the open-source work of [TechWorksLab](https://techworkslab.com
 ## License
 
 MIT
+
+## Further reading
+
+- [Measuring ADaM to SDTM traceability, from L0 to L3](https://techworkslab.com/insights-traceability-levels-r4subtrace), the traceability level model this package computes, from TECHWORKSLAB.
