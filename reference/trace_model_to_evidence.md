@@ -1,7 +1,7 @@
 # Convert Trace Model to R4SUB Evidence
 
 Emits evidence rows compatible with
-[`r4subcore::validate_evidence()`](https://rdrr.io/pkg/r4subcore/man/validate_evidence.html)
+[`r4subcore::validate_evidence()`](https://r4sub.github.io/r4subcore/reference/validate_evidence.html)
 for each ADaM variable's trace level, plus diagnostic rows for orphans,
 ambiguities, and conflicts.
 
@@ -26,7 +26,7 @@ trace_model_to_evidence(
 - ctx:
 
   An `r4sub_run_context` from
-  [`r4subcore::r4sub_run_context()`](https://rdrr.io/pkg/r4subcore/man/r4sub_run_context.html).
+  [`r4subcore::r4sub_run_context()`](https://r4sub.github.io/r4subcore/reference/r4sub_run_context.html).
 
 - source_name:
 
@@ -39,14 +39,14 @@ trace_model_to_evidence(
 ## Value
 
 A data.frame of evidence rows passing
-[`r4subcore::validate_evidence()`](https://rdrr.io/pkg/r4subcore/man/validate_evidence.html).
+[`r4subcore::validate_evidence()`](https://r4sub.github.io/r4subcore/reference/validate_evidence.html).
 
 ## Examples
 
 ``` r
 library(r4subcore)
 ctx <- r4sub_run_context(study_id = "TEST001", environment = "DEV")
-#> ℹ Run context created: "R4S-20260716044929-ombeu7fd"
+#> ℹ Run context created: "R4S-20261025204252-ombeu7fd"
 adam_meta <- data.frame(
   dataset = "ADSL", variable = c("STUDYID", "AGE"),
   label = c("Study ID", "Age")

@@ -74,7 +74,7 @@ ind <- trace_indicator_scores(ev)
 |----|----|
 | [`trace_config_default()`](https://r4sub.github.io/r4subtrace/reference/trace_config_default.md) | Default traceability configuration |
 | [`build_trace_model()`](https://r4sub.github.io/r4subtrace/reference/build_trace_model.md) | Build a trace graph from metadata and mappings |
-| [`compute_trace_levels()`](https://r4sub.github.io/r4subtrace/reference/compute_trace_levels.md) | Assign L0–L3 trace levels per ADaM variable |
+| [`compute_trace_levels()`](https://r4sub.github.io/r4subtrace/reference/compute_trace_levels.md) | Assign L0-L3 trace levels per ADaM variable |
 | [`trace_model_to_evidence()`](https://r4sub.github.io/r4subtrace/reference/trace_model_to_evidence.md) | Emit r4subcore-compatible evidence rows |
 | [`trace_indicator_scores()`](https://r4sub.github.io/r4subtrace/reference/trace_indicator_scores.md) | Compute trace indicator scores |
 | [`validate_mapping()`](https://r4sub.github.io/r4subtrace/reference/validate_mapping.md) | Validate a mapping table for required columns |
@@ -88,6 +88,18 @@ ind <- trace_indicator_scores(ev)
 - **Tool-agnostic:** ingest mappings from any source format
 - **Reviewer-centric:** emphasize explainability, not just metrics
 
+## Maintained by
+
+R4SUB is part of the open-source work of
+[TechWorksLab](https://techworkslab.com) - clinical programming and
+regulatory submissions. Maintainer: Pawan Rama Mali.
+
 ## License
 
 MIT
+
+## Further reading
+
+- [Measuring ADaM to SDTM traceability, from L0 to
+  L3](https://techworkslab.com/insights-traceability-levels-r4subtrace),
+  the traceability level model this package computes, from TECHWORKSLAB.

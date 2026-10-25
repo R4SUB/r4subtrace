@@ -20,7 +20,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">r4subtrace</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.3.1</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -33,7 +33,8 @@
 <li class="active nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
-<li><a class="dropdown-item" href="../articles/traceability.html">Traceability Analysis with r4subtrace</a></li>
+<li><a class="dropdown-item" href="../articles/case-study-adam-sdtm.html">Case study: tracing ADaM back to SDTM</a></li>
+    <li><a class="dropdown-item" href="../articles/traceability.html">Traceability Analysis with r4subtrace</a></li>
   </ul>
 </li>
 <li class="nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
@@ -132,21 +133,21 @@ describes the relationships:</p>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 6 × 6</span></span></span>
 <span><span class="co">#&gt;   node_id                            node_type dataset variable label      role </span></span>
 <span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                              <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> N-b1ac6405e4b59cfc8dee303e0360acd0 variable  ADSL    STUDYID  Study ID   adam </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> N-59a38e629aca6bc554054c09d218b214 variable  ADSL    USUBJID  Unique Su… adam </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> N-05e02c840082204d934e8bf0af3d7116 variable  ADSL    AGE      Age        adam </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> N-f48867c9e22f0a29a60b6adc0fc0c7c1 variable  ADSL    SEX      Sex        adam </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> N-c213d93842abc942cabfc42e44d3f027 variable  ADSL    TRT01P   Planned T… adam </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> N-cc0edb9be98d14ec9467d7b85ed1daa3 variable  DM      STUDYID  Study ID   sdtm</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> N-9abc20438c6cc0f617e83c62e34902db variable  ADSL    STUDYID  Study ID   adam </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> N-eb6b237955dda7f6d6398c61d4f92eea variable  ADSL    USUBJID  Unique Su… adam </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> N-61004a41aba4053d8a388d673f0af1ed variable  ADSL    AGE      Age        adam </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> N-05ff9c7794a452f7a2e571197bfc00b8 variable  ADSL    SEX      Sex        adam </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> N-921039f11a132416e1358dbbf77c47b1 variable  ADSL    TRT01P   Planned T… adam </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> N-ab72ae71f9c5cbafb45fe6f1b1381c35 variable  DM      STUDYID  Study ID   sdtm</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">tm</span><span class="op">$</span><span class="va">edges</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 5 × 5</span></span></span>
 <span><span class="co">#&gt;   from_id                            to_id           edge_type confidence source</span></span>
 <span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                              <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> N-b1ac6405e4b59cfc8dee303e0360acd0 N-cc0edb9be98d… derived_…         <span style="color: #BB0000;">NA</span> mappi…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> N-59a38e629aca6bc554054c09d218b214 N-37ed8581c0a7… derived_…         <span style="color: #BB0000;">NA</span> mappi…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> N-05e02c840082204d934e8bf0af3d7116 N-c627fc67fb46… derived_…         <span style="color: #BB0000;">NA</span> mappi…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> N-f48867c9e22f0a29a60b6adc0fc0c7c1 N-b83e6aca42cb… derived_…         <span style="color: #BB0000;">NA</span> mappi…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> N-c213d93842abc942cabfc42e44d3f027 N-7b80b9efed5b… derived_…         <span style="color: #BB0000;">NA</span> mappi…</span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> N-9abc20438c6cc0f617e83c62e34902db N-ab72ae71f9c5… derived_…         <span style="color: #BB0000;">NA</span> mappi…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> N-eb6b237955dda7f6d6398c61d4f92eea N-ece07ff633f6… derived_…         <span style="color: #BB0000;">NA</span> mappi…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> N-61004a41aba4053d8a388d673f0af1ed N-2da1b29c4b59… derived_…         <span style="color: #BB0000;">NA</span> mappi…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> N-05ff9c7794a452f7a2e571197bfc00b8 N-41c3ec10e8af… derived_…         <span style="color: #BB0000;">NA</span> mappi…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> N-921039f11a132416e1358dbbf77c47b1 N-748b4078dc56… derived_…         <span style="color: #BB0000;">NA</span> mappi…</span></span></code></pre></div>
 <p>Diagnostic information flags any orphan variables (unmapped ADaM
 variables):</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
@@ -226,6 +227,100 @@ aggregates:</p>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> ADSL         DERIVED_VAR</span></span></code></pre></div>
 <p>Orphaned variables (like <code>DERIVED_VAR</code> above) should have
 derivation text documented to satisfy U-002 and T-002 requirements.</p>
+</div>
+<div class="section level2">
+<h2 id="coverage-report-for-the-adrg">Coverage report for the ADRG<a class="anchor" aria-label="anchor" href="#coverage-report-for-the-adrg"></a>
+</h2>
+<p>Once a trace model is built,
+<code><a href="../reference/export_traceability_report.html">export_traceability_report()</a></code> produces the coverage table an
+ADRG appendix needs: how much of each ADaM dataset traces back to SDTM,
+which variables do not, and an overall summary row.</p>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">report</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/export_traceability_report.html">export_traceability_report</a></span><span class="op">(</span><span class="va">tm</span><span class="op">)</span></span>
+<span><span class="va">report</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 2 × 6</span></span></span>
+<span><span class="co">#&gt;   adam_dataset n_variables n_traced n_untraced pct_traced untraced_vars</span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> ADSL                   5        5          0        100 <span style="color: #949494;">""</span>           </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> OVERALL                5        5          0        100 <span style="color: #949494;">""</span></span></span></code></pre></div>
+<p>A variable counts as traced when its trace level reaches
+<code>traced_min_level</code> (the default of 2 treats an existing SDTM
+mapping as traced). Raise it to 3 to require a high-confidence mapping.
+Pass <code>format = "csv"</code> or <code>format = "xlsx"</code> with a
+<code>path</code> to write the table straight into a submission
+package:</p>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/export_traceability_report.html">export_traceability_report</a></span><span class="op">(</span><span class="va">tm</span>, format <span class="op">=</span> <span class="st">"csv"</span>, path <span class="op">=</span> <span class="st">"traceability.csv"</span><span class="op">)</span></span></code></pre></div>
+</div>
+<div class="section level2">
+<h2 id="multi-step-derivation-chains">Multi-step derivation chains<a class="anchor" aria-label="anchor" href="#multi-step-derivation-chains"></a>
+</h2>
+<p>A direct ADaM-to-SDTM mapping is only the simplest case. Many
+variables are derived from other ADaM variables that are themselves
+derived from SDTM. A single hop misses those links.
+<code><a href="../reference/trace_chains.html">trace_chains()</a></code> follows the full path back to source, using
+an <code>adam_derivations</code> table for the ADaM-to-ADaM steps.</p>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">adam</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span></span>
+<span>  dataset  <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"ADSL"</span>, <span class="st">"ADAE"</span>, <span class="st">"ADTTE"</span><span class="op">)</span>,</span>
+<span>  variable <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"AGE"</span>, <span class="st">"AAGE"</span>, <span class="st">"TAGE"</span><span class="op">)</span>,</span>
+<span>  label    <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Age"</span>, <span class="st">"Analysis Age"</span>, <span class="st">"Time-to-event Age"</span><span class="op">)</span></span>
+<span><span class="op">)</span></span>
+<span><span class="va">sdtm</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>dataset <span class="op">=</span> <span class="st">"DM"</span>, variable <span class="op">=</span> <span class="st">"AGE"</span>, label <span class="op">=</span> <span class="st">"Age"</span><span class="op">)</span></span>
+<span><span class="va">map</span>  <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span></span>
+<span>  adam_dataset <span class="op">=</span> <span class="st">"ADSL"</span>, adam_var <span class="op">=</span> <span class="st">"AGE"</span>,</span>
+<span>  sdtm_domain <span class="op">=</span> <span class="st">"DM"</span>, sdtm_var <span class="op">=</span> <span class="st">"AGE"</span>, confidence <span class="op">=</span> <span class="fl">1</span></span>
+<span><span class="op">)</span></span>
+<span><span class="va">tmc</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/build_trace_model.html">build_trace_model</a></span><span class="op">(</span><span class="va">adam</span>, <span class="va">sdtm</span>, mapping <span class="op">=</span> <span class="va">map</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">deriv</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span></span>
+<span>  from_dataset <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"ADAE"</span>, <span class="st">"ADTTE"</span><span class="op">)</span>,</span>
+<span>  from_var     <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"AAGE"</span>, <span class="st">"TAGE"</span><span class="op">)</span>,</span>
+<span>  to_dataset   <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"ADSL"</span>, <span class="st">"ADAE"</span><span class="op">)</span>,</span>
+<span>  to_var       <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"AGE"</span>, <span class="st">"AAGE"</span><span class="op">)</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="../reference/trace_chains.html">trace_chains</a></span><span class="op">(</span><span class="va">tmc</span>, adam_derivations <span class="op">=</span> <span class="va">deriv</span><span class="op">)</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 3 × 9</span></span></span>
+<span><span class="co">#&gt;   adam_dataset adam_var max_depth grounded terminal_source has_cycle truncated</span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span>    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> ADSL         AGE              1 TRUE     DM.AGE          FALSE     FALSE    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> ADAE         AAGE             2 TRUE     DM.AGE          FALSE     FALSE    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> ADTTE        TAGE             3 TRUE     DM.AGE          FALSE     FALSE    </span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 2 more variables: n_paths &lt;int&gt;, longest_chain &lt;chr&gt;</span></span></span></code></pre></div>
+<p><code>ADTTE.TAGE</code> is three hops from source, but it is fully
+grounded: the chain reaches <code>DM.AGE</code>. The
+<code>trace_depth</code> argument caps how far the walk follows a chain,
+and circular derivations are detected and reported rather than looping
+forever.</p>
+</div>
+<div class="section level2">
+<h2 id="focusing-on-the-problems">Focusing on the problems<a class="anchor" aria-label="anchor" href="#focusing-on-the-problems"></a>
+</h2>
+<p>A coverage table lists every variable. On a real submission with
+thousands of variables, a team wants only the ones that need attention.
+<code><a href="../reference/trace_problems.html">trace_problems()</a></code> returns just those: variables not traced
+to the required level, and, when a derivation table is given, chains
+that are circular, cut off, or never reach SDTM.</p>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/trace_problems.html">trace_problems</a></span><span class="op">(</span><span class="va">tm2</span><span class="op">)</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 1 × 4</span></span></span>
+<span><span class="co">#&gt;   adam_dataset adam_var    problem  detail                  </span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> ADSL         DERIVED_VAR untraced trace level 1 is below 2</span></span></code></pre></div>
+<p>Passing the derivation table adds chain problems to the same view, so
+cycles and ungrounded derivations show up alongside untraced
+variables:</p>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/trace_problems.html">trace_problems</a></span><span class="op">(</span><span class="va">tmc</span>, adam_derivations <span class="op">=</span> <span class="va">deriv</span><span class="op">)</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 2 × 4</span></span></span>
+<span><span class="co">#&gt;   adam_dataset adam_var problem  detail                  </span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> ADAE         AAGE     untraced trace level 1 is below 2</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> ADTTE        TAGE     untraced trace level 1 is below 2</span></span></code></pre></div>
+<p>The view is built from the same coverage and chain functions, so it
+stays correct as a submission grows; the engine is exercised on a
+10,000-variable model in the package tests.</p>
 </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside>

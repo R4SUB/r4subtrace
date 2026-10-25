@@ -74,7 +74,7 @@ ind <- trace_indicator_scores(ev)
 |----|----|
 | [`trace_config_default()`](https://r4sub.github.io/r4subtrace/reference/trace_config_default.md) | Default traceability configuration |
 | [`build_trace_model()`](https://r4sub.github.io/r4subtrace/reference/build_trace_model.md) | Build a trace graph from metadata and mappings |
-| [`compute_trace_levels()`](https://r4sub.github.io/r4subtrace/reference/compute_trace_levels.md) | Assign L0–L3 trace levels per ADaM variable |
+| [`compute_trace_levels()`](https://r4sub.github.io/r4subtrace/reference/compute_trace_levels.md) | Assign L0-L3 trace levels per ADaM variable |
 | [`trace_model_to_evidence()`](https://r4sub.github.io/r4subtrace/reference/trace_model_to_evidence.md) | Emit r4subcore-compatible evidence rows |
 | [`trace_indicator_scores()`](https://r4sub.github.io/r4subtrace/reference/trace_indicator_scores.md) | Compute trace indicator scores |
 | [`validate_mapping()`](https://r4sub.github.io/r4subtrace/reference/validate_mapping.md) | Validate a mapping table for required columns |
@@ -88,9 +88,21 @@ ind <- trace_indicator_scores(ev)
 - **Tool-agnostic:** ingest mappings from any source format
 - **Reviewer-centric:** emphasize explainability, not just metrics
 
+## Maintained by
+
+R4SUB is part of the open-source work of
+[TechWorksLab](https://techworkslab.com) - clinical programming and
+regulatory submissions. Maintainer: Pawan Rama Mali.
+
 ## License
 
 MIT
+
+## Further reading
+
+- [Measuring ADaM to SDTM traceability, from L0 to
+  L3](https://techworkslab.com/insights-traceability-levels-r4subtrace),
+  the traceability level model this package computes, from TECHWORKSLAB.
 
 # Package index
 
@@ -117,6 +129,24 @@ MIT
 - [`validate_metadata()`](https://r4sub.github.io/r4subtrace/reference/validate_metadata.md)
   : Validate Dataset Metadata
 
+## Coverage & Analysis
+
+- [`traceability_coverage()`](https://r4sub.github.io/r4subtrace/reference/traceability_coverage.md)
+  : Traceability Coverage by ADaM Dataset
+- [`trace_chains()`](https://r4sub.github.io/r4subtrace/reference/trace_chains.md)
+  : Follow Multi-Step Derivation Chains
+- [`trace_impact()`](https://r4sub.github.io/r4subtrace/reference/trace_impact.md)
+  : Impact Analysis for a Changed Source Variable
+- [`trace_problems()`](https://r4sub.github.io/r4subtrace/reference/trace_problems.md)
+  : The Traceability Problems Worth Acting On
+
+## Visualization & Reporting
+
+- [`plot_trace_graph()`](https://r4sub.github.io/r4subtrace/reference/plot_trace_graph.md)
+  : Plot a Derivation Graph
+- [`export_traceability_report()`](https://r4sub.github.io/r4subtrace/reference/export_traceability_report.md)
+  : Export a Traceability Coverage Report
+
 ## Print Methods
 
 - [`print(`*`<trace_model>`*`)`](https://r4sub.github.io/r4subtrace/reference/print.trace_model.md)
@@ -126,5 +156,7 @@ MIT
 
 ### All vignettes
 
+- [Case study: tracing ADaM back to
+  SDTM](https://r4sub.github.io/r4subtrace/articles/case-study-adam-sdtm.md):
 - [Traceability Analysis with
   r4subtrace](https://r4sub.github.io/r4subtrace/articles/traceability.md):
