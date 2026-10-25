@@ -1,6 +1,6 @@
 ## Submission
 
-This is an update of r4subtrace from 0.1.0 (on CRAN) to 0.2.1, a feature release
+This is an update of r4subtrace from 0.1.0 (on CRAN) to 0.3.1, a feature release
 for the R4SUB (Ready for Submission) ecosystem. Highlights:
 
 * `export_traceability_report()` and `traceability_coverage()` for ADRG-ready

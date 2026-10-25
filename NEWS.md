@@ -1,3 +1,7 @@
+# r4subtrace 0.3.1
+
+- Complete the pkgdown reference index so the documentation site builds, and polish metadata for CRAN.
+
 # r4subtrace 0.3.0
 
 - Add `trace_impact()`, impact analysis for a changed source variable. Given a

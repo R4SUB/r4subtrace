@@ -74,7 +74,7 @@ ind <- trace_indicator_scores(ev)
 |---|---|
 | `trace_config_default()` | Default traceability configuration |
 | `build_trace_model()` | Build a trace graph from metadata and mappings |
-| `compute_trace_levels()` | Assign L0–L3 trace levels per ADaM variable |
+| `compute_trace_levels()` | Assign L0-L3 trace levels per ADaM variable |
 | `trace_model_to_evidence()` | Emit r4subcore-compatible evidence rows |
 | `trace_indicator_scores()` | Compute trace indicator scores |
 | `validate_mapping()` | Validate a mapping table for required columns |
