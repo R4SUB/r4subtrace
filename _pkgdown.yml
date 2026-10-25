@@ -34,6 +34,16 @@ reference:
       - trace_indicator_scores
       - validate_mapping
       - validate_metadata
+  - title: "Coverage & Analysis"
+    contents:
+      - traceability_coverage
+      - trace_chains
+      - trace_impact
+      - trace_problems
+  - title: "Visualization & Reporting"
+    contents:
+      - plot_trace_graph
+      - export_traceability_report
   - title: "Print Methods"
     contents:
       - print.trace_model
