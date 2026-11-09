@@ -1,5 +1,12 @@
 # r4subtrace (development version)
 
+- Add `export_impact_report()` and `summarize_impact()`, which turn the result
+  of `trace_impact()` into reportable form. `summarize_impact()` prints a short
+  digest and rolls up the affected downstream variables by dataset and by level
+  (distance from the change); `export_impact_report()` writes the full affected
+  list, with paths and the changed variable, to a data.frame, CSV, or Excel file
+  for a change-control record. Reporting only: `trace_impact()` and the
+  derivation graph are unchanged.
 - Add `sdtm_utilization()`, the mirror image of orphan detection. Given a trace
   model, it reports which SDTM source variables are referenced by no ADaM
   variable, the dead or unused sources in a submission, with a per-variable
