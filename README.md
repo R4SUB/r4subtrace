@@ -77,6 +77,9 @@ ind <- trace_indicator_scores(ev)
 | `compute_trace_levels()` | Assign L0-L3 trace levels per ADaM variable |
 | `trace_model_to_evidence()` | Emit r4subcore-compatible evidence rows |
 | `trace_indicator_scores()` | Compute trace indicator scores |
+| `sdtm_utilization()` | Report unused SDTM source variables (the mirror of orphan detection) |
+| `summarize_impact()` | Roll up a `trace_impact()` result by dataset and level, and print a digest |
+| `export_impact_report()` | Export a `trace_impact()` result as a data.frame, CSV, or Excel change-control record |
 | `validate_mapping()` | Validate a mapping table for required columns |
 | `validate_metadata()` | Validate ADaM/SDTM metadata tables |
 
