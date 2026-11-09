@@ -1,5 +1,10 @@
 # r4subtrace (development version)
 
+- Add `sdtm_utilization()`, the mirror image of orphan detection. Given a trace
+  model, it reports which SDTM source variables are referenced by no ADaM
+  variable, the dead or unused sources in a submission, with a per-variable
+  used-count. It reuses the same reverse adjacency as `trace_impact()` and is a
+  pure diagnostic: trace levels, coverage, and scoring are unchanged.
 - Import `%||%` from `rlang` explicitly. It was used in
   `trace_model_to_evidence()` but relied on the base R `%||%`, which only exists
   from R 4.4.0, so evidence emission could fail on the R 4.2/4.3 versions the
