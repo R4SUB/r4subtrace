@@ -133,7 +133,7 @@ Submission Confidence Index.
 ``` r
 
 ctx <- r4subcore::r4sub_run_context(study_id = "CDISCPILOT01", environment = "UAT")
-#> ℹ Run context created: "R4S-20261025204255-wl4dieex"
+#> ℹ Run context created: "R4S-20261109175721-wl4dieex"
 ev  <- trace_model_to_evidence(tm, ctx = ctx)
 #> ✔ Evidence table created: 47 rows
 trace_indicator_scores(ev)

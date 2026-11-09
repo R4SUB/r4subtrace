@@ -1,5 +1,13 @@
 # Changelog
 
+## r4subtrace (development version)
+
+- Import `%||%` from `rlang` explicitly. It was used in
+  [`trace_model_to_evidence()`](https://r4sub.github.io/r4subtrace/reference/trace_model_to_evidence.md)
+  but relied on the base R `%||%`, which only exists from R 4.4.0, so
+  evidence emission could fail on the R 4.2/4.3 versions the package
+  still declares support for. No change to traceability behavior.
+
 ## r4subtrace 0.3.1
 
 - Complete the pkgdown reference index so the documentation site builds,
