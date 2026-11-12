@@ -1,5 +1,17 @@
 # r4subtrace (development version)
 
+- Add `export_trace_graph()`, which serializes the derivation graph behind
+  `trace_chains()` to a portable text format: Graphviz DOT, Mermaid, or GraphML.
+  Unlike `plot_trace_graph()`, which needs `igraph` and only renders
+  interactively, the text can be committed to version control, embedded in an
+  ADRG or vignette, rendered by Graphviz, or opened in a graph editor. Edges run
+  from a derived variable to its source, ADaM-to-ADaM derivations are included
+  when supplied, and every variable node is emitted so orphans and unused SDTM
+  sources show as isolated nodes. Pure serialization: trace levels, coverage,
+  and scoring are unchanged.
+- Complete the pkgdown reference index with `sdtm_utilization()`,
+  `summarize_impact()`, and `export_impact_report()`, which were exported but
+  missing from the documentation site index.
 - Add `export_impact_report()` and `summarize_impact()`, which turn the result
   of `trace_impact()` into reportable form. `summarize_impact()` prints a short
   digest and rolls up the affected downstream variables by dataset and by level
