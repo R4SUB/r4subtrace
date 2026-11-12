@@ -211,8 +211,12 @@ dot_escape <- function(x) {
 }
 
 mermaid_escape <- function(x) {
-  # Quote double quotes using the HTML entity Mermaid understands inside
-  # a "..." node label.
+  # Mermaid renders node labels as HTML, so the HTML metacharacters must be
+  # replaced with the entities it understands inside a "..." node label. Escape
+  # the ampersand first so the entities emitted below are not re-escaped.
+  x <- gsub("&", "&amp;", x, fixed = TRUE)
+  x <- gsub("<", "&lt;", x, fixed = TRUE)
+  x <- gsub(">", "&gt;", x, fixed = TRUE)
   gsub("\"", "&quot;", x, fixed = TRUE)
 }
 
