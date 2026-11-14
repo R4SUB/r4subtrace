@@ -40,10 +40,14 @@ reference:
       - trace_chains
       - trace_impact
       - trace_problems
+      - sdtm_utilization
+      - summarize_impact
   - title: "Visualization & Reporting"
     contents:
       - plot_trace_graph
+      - export_trace_graph
       - export_traceability_report
+      - export_impact_report
   - title: "Print Methods"
     contents:
       - print.trace_model
