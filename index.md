@@ -77,6 +77,9 @@ ind <- trace_indicator_scores(ev)
 | [`compute_trace_levels()`](https://r4sub.github.io/r4subtrace/reference/compute_trace_levels.md) | Assign L0-L3 trace levels per ADaM variable |
 | [`trace_model_to_evidence()`](https://r4sub.github.io/r4subtrace/reference/trace_model_to_evidence.md) | Emit r4subcore-compatible evidence rows |
 | [`trace_indicator_scores()`](https://r4sub.github.io/r4subtrace/reference/trace_indicator_scores.md) | Compute trace indicator scores |
+| [`sdtm_utilization()`](https://r4sub.github.io/r4subtrace/reference/sdtm_utilization.md) | Report unused SDTM source variables (the mirror of orphan detection) |
+| [`summarize_impact()`](https://r4sub.github.io/r4subtrace/reference/summarize_impact.md) | Roll up a [`trace_impact()`](https://r4sub.github.io/r4subtrace/reference/trace_impact.md) result by dataset and level, and print a digest |
+| [`export_impact_report()`](https://r4sub.github.io/r4subtrace/reference/export_impact_report.md) | Export a [`trace_impact()`](https://r4sub.github.io/r4subtrace/reference/trace_impact.md) result as a data.frame, CSV, or Excel change-control record |
 | [`validate_mapping()`](https://r4sub.github.io/r4subtrace/reference/validate_mapping.md) | Validate a mapping table for required columns |
 | [`validate_metadata()`](https://r4sub.github.io/r4subtrace/reference/validate_metadata.md) | Validate ADaM/SDTM metadata tables |
 

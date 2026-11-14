@@ -2,6 +2,50 @@
 
 ## r4subtrace (development version)
 
+- Add
+  [`export_trace_graph()`](https://r4sub.github.io/r4subtrace/reference/export_trace_graph.md),
+  which serializes the derivation graph behind
+  [`trace_chains()`](https://r4sub.github.io/r4subtrace/reference/trace_chains.md)
+  to a portable text format: Graphviz DOT, Mermaid, or GraphML. Unlike
+  [`plot_trace_graph()`](https://r4sub.github.io/r4subtrace/reference/plot_trace_graph.md),
+  which needs `igraph` and only renders interactively, the text can be
+  committed to version control, embedded in an ADRG or vignette,
+  rendered by Graphviz, or opened in a graph editor. Edges run from a
+  derived variable to its source, ADaM-to-ADaM derivations are included
+  when supplied, and every variable node is emitted so orphans and
+  unused SDTM sources show as isolated nodes. Pure serialization: trace
+  levels, coverage, and scoring are unchanged.
+- Complete the pkgdown reference index with
+  [`sdtm_utilization()`](https://r4sub.github.io/r4subtrace/reference/sdtm_utilization.md),
+  [`summarize_impact()`](https://r4sub.github.io/r4subtrace/reference/summarize_impact.md),
+  and
+  [`export_impact_report()`](https://r4sub.github.io/r4subtrace/reference/export_impact_report.md),
+  which were exported but missing from the documentation site index.
+- Add
+  [`export_impact_report()`](https://r4sub.github.io/r4subtrace/reference/export_impact_report.md)
+  and
+  [`summarize_impact()`](https://r4sub.github.io/r4subtrace/reference/summarize_impact.md),
+  which turn the result of
+  [`trace_impact()`](https://r4sub.github.io/r4subtrace/reference/trace_impact.md)
+  into reportable form.
+  [`summarize_impact()`](https://r4sub.github.io/r4subtrace/reference/summarize_impact.md)
+  prints a short digest and rolls up the affected downstream variables
+  by dataset and by level (distance from the change);
+  [`export_impact_report()`](https://r4sub.github.io/r4subtrace/reference/export_impact_report.md)
+  writes the full affected list, with paths and the changed variable, to
+  a data.frame, CSV, or Excel file for a change-control record.
+  Reporting only:
+  [`trace_impact()`](https://r4sub.github.io/r4subtrace/reference/trace_impact.md)
+  and the derivation graph are unchanged.
+- Add
+  [`sdtm_utilization()`](https://r4sub.github.io/r4subtrace/reference/sdtm_utilization.md),
+  the mirror image of orphan detection. Given a trace model, it reports
+  which SDTM source variables are referenced by no ADaM variable, the
+  dead or unused sources in a submission, with a per-variable
+  used-count. It reuses the same reverse adjacency as
+  [`trace_impact()`](https://r4sub.github.io/r4subtrace/reference/trace_impact.md)
+  and is a pure diagnostic: trace levels, coverage, and scoring are
+  unchanged.
 - Import `%||%` from `rlang` explicitly. It was used in
   [`trace_model_to_evidence()`](https://r4sub.github.io/r4subtrace/reference/trace_model_to_evidence.md)
   but relied on the base R `%||%`, which only exists from R 4.4.0, so

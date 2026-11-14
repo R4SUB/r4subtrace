@@ -33,13 +33,21 @@
   : Impact Analysis for a Changed Source Variable
 - [`trace_problems()`](https://r4sub.github.io/r4subtrace/reference/trace_problems.md)
   : The Traceability Problems Worth Acting On
+- [`sdtm_utilization()`](https://r4sub.github.io/r4subtrace/reference/sdtm_utilization.md)
+  : Report Unused SDTM Source Variables
+- [`summarize_impact()`](https://r4sub.github.io/r4subtrace/reference/summarize_impact.md)
+  : Summarize an Impact Analysis Result
 
 ## Visualization & Reporting
 
 - [`plot_trace_graph()`](https://r4sub.github.io/r4subtrace/reference/plot_trace_graph.md)
   : Plot a Derivation Graph
+- [`export_trace_graph()`](https://r4sub.github.io/r4subtrace/reference/export_trace_graph.md)
+  : Export the Derivation Graph to a Portable Text Format
 - [`export_traceability_report()`](https://r4sub.github.io/r4subtrace/reference/export_traceability_report.md)
   : Export a Traceability Coverage Report
+- [`export_impact_report()`](https://r4sub.github.io/r4subtrace/reference/export_impact_report.md)
+  : Export an Impact Analysis Report
 
 ## Print Methods
 
