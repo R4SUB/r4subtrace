@@ -34,11 +34,13 @@ reference:
       - trace_indicator_scores
       - validate_mapping
       - validate_metadata
+      - validate_trace_graph
   - title: "Coverage & Analysis"
     contents:
       - traceability_coverage
       - trace_chains
       - trace_impact
+      - trace_lineage
       - trace_problems
       - sdtm_utilization
       - summarize_impact

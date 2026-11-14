@@ -1,5 +1,18 @@
 # r4subtrace (development version)
 
+- Add `validate_trace_graph()`, structural integrity checks on the derivation
+  graph behind `trace_chains()`. It returns a tidy diagnostic report that flags
+  circular derivation chains (strongly connected components), dangling edges
+  (a derivation that names a variable not in the model), orphan nodes (a
+  variable in no derivation edge), and disconnected components (a group of
+  derivations with no SDTM source). Purely structural graph checks, found with
+  standard algorithms; no trace level, coverage, or score is involved.
+- Add `trace_lineage()`, a path query over the same graph. Given one variable
+  it returns either its full upstream ancestry (every source it derives from,
+  down to SDTM) or its downstream dependents, each at its shortest distance
+  with a readable path reading outward from the variable. `trace_impact()` is
+  the downstream-of-a-source special case; `trace_lineage()` generalizes it to
+  either direction from any node. Circular references are handled.
 - Add `export_trace_graph()`, which serializes the derivation graph behind
   `trace_chains()` to a portable text format: Graphviz DOT, Mermaid, or GraphML.
   Unlike `plot_trace_graph()`, which needs `igraph` and only renders
