@@ -3,6 +3,28 @@
 ## r4subtrace (development version)
 
 - Add
+  [`validate_trace_graph()`](https://r4sub.github.io/r4subtrace/reference/validate_trace_graph.md),
+  structural integrity checks on the derivation graph behind
+  [`trace_chains()`](https://r4sub.github.io/r4subtrace/reference/trace_chains.md).
+  It returns a tidy diagnostic report that flags circular derivation
+  chains (strongly connected components), dangling edges (a derivation
+  that names a variable not in the model), orphan nodes (a variable in
+  no derivation edge), and disconnected components (a group of
+  derivations with no SDTM source). Purely structural graph checks,
+  found with standard algorithms; no trace level, coverage, or score is
+  involved.
+- Add
+  [`trace_lineage()`](https://r4sub.github.io/r4subtrace/reference/trace_lineage.md),
+  a path query over the same graph. Given one variable it returns either
+  its full upstream ancestry (every source it derives from, down to
+  SDTM) or its downstream dependents, each at its shortest distance with
+  a readable path reading outward from the variable.
+  [`trace_impact()`](https://r4sub.github.io/r4subtrace/reference/trace_impact.md)
+  is the downstream-of-a-source special case;
+  [`trace_lineage()`](https://r4sub.github.io/r4subtrace/reference/trace_lineage.md)
+  generalizes it to either direction from any node. Circular references
+  are handled.
+- Add
   [`export_trace_graph()`](https://r4sub.github.io/r4subtrace/reference/export_trace_graph.md),
   which serializes the derivation graph behind
   [`trace_chains()`](https://r4sub.github.io/r4subtrace/reference/trace_chains.md)

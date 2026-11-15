@@ -22,6 +22,8 @@
   : Validate Trace Mapping
 - [`validate_metadata()`](https://r4sub.github.io/r4subtrace/reference/validate_metadata.md)
   : Validate Dataset Metadata
+- [`validate_trace_graph()`](https://r4sub.github.io/r4subtrace/reference/validate_trace_graph.md)
+  : Validate the Structural Integrity of a Derivation Graph
 
 ## Coverage & Analysis
 
@@ -31,6 +33,8 @@
   : Follow Multi-Step Derivation Chains
 - [`trace_impact()`](https://r4sub.github.io/r4subtrace/reference/trace_impact.md)
   : Impact Analysis for a Changed Source Variable
+- [`trace_lineage()`](https://r4sub.github.io/r4subtrace/reference/trace_lineage.md)
+  : Trace the Lineage of a Variable Through the Derivation Graph
 - [`trace_problems()`](https://r4sub.github.io/r4subtrace/reference/trace_problems.md)
   : The Traceability Problems Worth Acting On
 - [`sdtm_utilization()`](https://r4sub.github.io/r4subtrace/reference/sdtm_utilization.md)
